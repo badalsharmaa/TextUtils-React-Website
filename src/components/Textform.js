@@ -27,15 +27,19 @@ export default function Textform(props) {
   const [Text, setText] = useState("Enter the text");
   return (
     <>
-      <div className="conotainer">
+      <div className="container">
         <div className="mb-3">
-          <h1>Enter the name {props.title}</h1>
+          <h1>Enter the {props.title}</h1>
           <textarea
             className="form-control"
             id="myBox"
             rows="8"
             value={Text}
             onChange={handleOnChange}
+            style={{
+              backgroundColor: props.mode === "light" ? "white" : "#212529",
+              color: props.mode === "light" ? "#212529" : "white",
+            }}
           ></textarea>
         </div>
         <button
@@ -86,7 +90,7 @@ export default function Textform(props) {
           <b>{0.008 * Text.split(" ").length}</b> min Time takken to read by you
         </p>
         <h2>Preview</h2>
-        <p>{Text}</p>
+        <p>{Text.length > 0 ? Text : "Enter you Text to Preview It"}</p>
       </div>
     </>
   );
