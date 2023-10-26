@@ -28,14 +28,6 @@ export default function Navbar(props) {
                 {props.home}
               </a>
             </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                href="https://www.linkedin.com/in/badalsharmaa/"
-              >
-                About
-              </a>
-            </li>
           </ul>
           <div
             className={`form-check form-switch text-${
@@ -56,17 +48,6 @@ export default function Navbar(props) {
               Dark Mode
             </label>
           </div>
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-success" type="submit">
-              Search
-            </button>
-          </form>
         </div>
       </div>
     </nav>

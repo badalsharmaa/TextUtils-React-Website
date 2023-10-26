@@ -1,30 +1,38 @@
 import React, { useState } from "react";
 export default function Textform(props) {
-  const handleOnClick = () => {
+  const [Text, setText] = useState("Enter the text");
+  const handleUpper = () => {
+    props.showAlert("UpperCase is ", "success");
     let newText = Text.toUpperCase();
     setText(newText);
   };
-  const handleOnClickL = () => {
+  const handleLower = () => {
     let newText = Text.toLowerCase();
     setText(newText);
+    props.showAlert("lower case is ", "warning");
   };
-  const handleOnChangeC = () => {
+  const handleClear = () => {
     let newText = "";
     setText(newText);
+    props.showAlert("clear is not done", "alert");
   };
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
-  const handleOnChangeCo = () => {
-    var textcopy = document.getElementById("boxcopy");
-    textcopy.select();
-    navigator.clipboard.writeText(textcopy.value);
+  const HandleCopy = () => {
+    props.showAlert("clear is not done", "alert");
+
+    var Text = document.getElementById("myBox");
+    Text.select();
+    navigator.clipboard.writeText(Text.value);
   };
-  const handleOnChangeRS = () => {
+  const handleRemoveSpace = () => {
+    props.showAlert("clear is not done", "alert");
+
     let newText = Text.split(/[ ]+/);
     setText(newText.join(" "));
   };
-  const [Text, setText] = useState("Enter the text");
+
   return (
     <>
       <div className="container">
@@ -42,39 +50,21 @@ export default function Textform(props) {
             }}
           ></textarea>
         </div>
-        <button
-          type="button"
-          className="btn btn-primary mx-2"
-          onClick={handleOnClick}
-        >
+        <button className="btn btn-primary mx-1 my-1" onClick={handleUpper}>
           Convert to uppercase
         </button>
-        <button
-          type="button"
-          className="btn btn-primary mx-2"
-          onClick={handleOnClickL}
-        >
+        <button className="btn btn-primary mx-1 my-1" onClick={handleLower}>
           Convert to Lowercase
         </button>
-        <button
-          type="button"
-          className="btn btn-primary mx-2"
-          onclick={handleOnChangeC}
-        >
+        <button className="btn btn-primary mx-1 my-1" onclick={handleClear}>
           Clear Test
         </button>
-        <button
-          type="button"
-          className="btn btn-primary mx-2"
-          onclick={handleOnChangeCo}
-          id="boxcopy"
-        >
+        <button className="btn btn-primary mx-1 my-1" onclick={HandleCopy}>
           Copy Text
         </button>
         <button
-          type="button"
-          className="btn btn-primary mx-2"
-          onclick={handleOnChangeRS}
+          className="btn btn-primary mx-1 my-1"
+          onclick={handleRemoveSpace}
         >
           Remove Space
         </button>
